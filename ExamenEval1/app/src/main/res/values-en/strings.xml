@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Eval 1 Exam</string>
+    <string name="login">Login</string>
+    <string name="pass">Password</string>
+    <string name="buttonLogin">Login</string>
+    <string name="url">URL</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonFind">Find</string>
+    <string name="buttonNew">New</string>
+    <string name="name">Name</string>
+    <string name="enterprise">Enterprise</string>
+    <string name="textviewLogin">Login</string>
+    <string name="userNotFound">User not found</string>
+    <string name="id">ID</string>
+    <string name="nombre">Name</string>
+    <string name="empresa">Enterprise</string>
+    <string name="mostrar">Show</string>
+    <string name="insertar">Insert</string>
+    <string name="internet">Network</string>
+</resources>

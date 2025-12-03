@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Examen Eval 1</string>
+    <string name="login">Inicio de sesion</string>
+    <string name="pass">Contraseña</string>
+    <string name="buttonLogin">Inicio de sesion</string>
+    <string name="url">URL</string>
+    <string name="buttonCancel">Cancelar</string>
+    <string name="buttonFind">Buscar</string>
+    <string name="buttonNew">Nuevo</string>
+    <string name="name">Nombre</string>
+    <string name="enterprise">Empresa</string>
+    <string name="textviewLogin">Inicio de sesion</string>
+    <string name="userNotFound">El usuario no existe</string>
+    <string name="id">ID</string>
+    <string name="nombre">Nombre</string>
+    <string name="empresa">Empresa</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="insertar">Insertar</string>
+    <string name="internet">Internet</string>
+</resources>

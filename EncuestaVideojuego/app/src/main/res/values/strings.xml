@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">EncuestaVideojuego</string>
+    <string name="elMejor">¿Cual es el más mejor videojuego?</string>
+    <string name="cualEscoges">A ver cual escoges…</string>
+    <string name="hasEscogido">Veo que te gusta el %1$s</string>
+    <string name="opcion1">Fallout 4</string>
+    <string name="opcion2">League of Legends</string>
+    <string name="opcion3">Fortnite</string>
+    <string name="opcion4">Team Fortress 2</string>
+    <string name="teGusta">¿Te gusta la encuesta?</string>
+    <string name="si">¡Si que te mola!</string>
+    <string name="no">¡¿No te molan!?</string>
+</resources>

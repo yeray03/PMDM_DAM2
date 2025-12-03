@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/elMejor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/elMejor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.094" />
+
+    <TextView
+        android:id="@+id/cualEscoges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cualEscoges"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.179" />
+
+    <RadioGroup
+        android:layout_width="172dp"
+        android:layout_height="192dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423">
+
+        <RadioButton
+            android:id="@+id/fallout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion1" />
+
+        <RadioButton
+            android:id="@+id/lol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion2" />
+
+        <RadioButton
+            android:id="@+id/fortnite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion3" />
+
+        <RadioButton
+            android:id="@+id/tf2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/opcion4" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/teGusta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
