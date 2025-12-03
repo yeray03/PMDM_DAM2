@@ -18,34 +18,36 @@
 
     <Button
         android:id="@+id/btnInsertEmpleado"
-        android:layout_width="130dp"
+        android:layout_width="157dp"
         android:layout_height="41dp"
         android:text="nuevoEmpDefault"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.839" />
+        app:layout_constraintVertical_bias="0.84" />
 
     <Button
         android:id="@+id/btnDeleteEmp"
-        android:layout_width="131dp"
-        android:layout_height="44dp"
+        android:layout_width="156dp"
+        android:layout_height="42dp"
         android:text="deleteEmpDefault"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
+        app:layout_constraintVertical_bias="0.921" />
 
     <Button
         android:id="@+id/btnGetAll"
-        android:layout_width="114dp"
-        android:layout_height="48dp"
+        android:layout_width="150dp"
+        android:layout_height="47dp"
         android:text="getAllEmp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
