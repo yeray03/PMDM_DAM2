@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MediaPlayer</string>
+    <string name="pause">Pause</string>
+    <string name="play">Play</string>
+    <string name="playing_audio">Reproduciendo %1$s</string>
 </resources>

@@ -29,8 +29,8 @@ class VideoPlayer : AppCompatActivity() {
             videoView.start()
         }
         val mediacontroller = MediaController(this)
-//        mediacontroller.setAnchorView(videoView)
         videoView.setMediaController(mediacontroller)
+        mediacontroller.setAnchorView(videoView)
 
     }
 }

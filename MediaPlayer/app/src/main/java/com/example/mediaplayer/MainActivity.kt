@@ -1,6 +1,7 @@
 package com.example.mediaplayer
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.READ_MEDIA_AUDIO
 import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.TIRAMISU
@@ -16,13 +17,20 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mediaplayer.adapter.AudioAdapter
 import com.example.mediaplayer.adapter.VideoAdapter
 import com.example.mediaplayer.items.Video
+import com.example.mediaplayer.items.Audio
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var videoAdapter: VideoAdapter
+    private lateinit var audioAdapter: AudioAdapter
+
+    private var seleccion: String = ""
+
+    // Launcher para comprobar y los permisos de lectura de almacenamiento y cargar los videos
     private val launcherPermmissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permisos ->
@@ -31,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             permisos[READ_EXTERNAL_STORAGE] == true
         }
-        if (granted) loadVideos()
+        if (granted && seleccion == "video") loadVideos() else loadAudios()
 
 
     }
@@ -51,17 +59,31 @@ class MainActivity : AppCompatActivity() {
 
         // Cargar una lista vacia al recyclerView
         videoAdapter = VideoAdapter(mutableListOf(), this)
+        audioAdapter = AudioAdapter(mutableListOf(), this)
 
         // Mostrar los videos al hacer click en el boton
         findViewById<Button>(R.id.btnVideo).setOnClickListener {
             multimediaReciclerView.adapter = videoAdapter
+            seleccion = "video"
+            requestPermissionsAndLoad()
+        }
+
+        // Mostrar los audios al hacer click en el boton
+        findViewById<Button>(R.id.btnAudio).setOnClickListener {
+            multimediaReciclerView.adapter = audioAdapter
+            seleccion = "audio"
             requestPermissionsAndLoad()
         }
     }
 
+    // Función para solicitar permisos de lectura de almacenamiento
     private fun requestPermissionsAndLoad() {
         val perms = if (SDK_INT >= TIRAMISU) {
-            arrayOf(READ_MEDIA_VIDEO)
+            if (seleccion == "video") {
+                arrayOf(READ_MEDIA_VIDEO)
+            } else {
+                arrayOf(READ_MEDIA_AUDIO)
+            }
         } else {
             arrayOf(READ_EXTERNAL_STORAGE)
         }
@@ -101,6 +123,44 @@ class MainActivity : AppCompatActivity() {
             }
             launch(Dispatchers.Main) {
                 videoAdapter.update(videos)
+            }
+        }
+    }
+
+    // Función para cargar los audios desde el almacenamiento externo
+    private fun loadAudios() {
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val audios = mutableListOf<Audio>()
+            val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+            // Consulta para obtener los audios
+            val projection = arrayOf(
+                MediaStore.Audio.Media._ID,
+                MediaStore.Audio.Media.DISPLAY_NAME,
+                MediaStore.Audio.Media.DURATION
+            )
+            val sort = "$DATE_ADDED DESC"
+            val cursor = contentResolver.query(
+                uri,
+                projection,
+                null,
+                null,
+                sort
+            )
+            cursor?.use {
+                val idCol = it.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)
+                val nameCol = it.getColumnIndexOrThrow(MediaStore.Audio.Media.DISPLAY_NAME)
+                val durationCol = it.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)
+                while (it.moveToNext()) {
+                    val id = it.getLong(idCol)
+                    val name = it.getString(nameCol)
+                    val duration = it.getInt(durationCol)
+                    val contentUri = MediaStore.Audio.Media.getContentUri("external", id)
+                    audios.add(Audio(id, name, contentUri, duration))
+                }
+            }
+            launch(Dispatchers.Main) {
+                audioAdapter.update(audios)
             }
         }
     }
